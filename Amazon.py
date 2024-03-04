@@ -20,3 +20,6 @@ def selection_sort(arr):
                 min_index = j
         arr[i], arr[min_index] = arr[min_index], arr[i]
     return arr
+
+
+#ya lo cree
