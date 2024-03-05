@@ -1,13 +1,29 @@
+import random
+
 print("Bienvenido a Amazon Bodega Management System.")
-print("Optimizando la organización de nuestros productos en la bodega...\n")
+print("Optimizando la organización de nuestros productos y precios en la bodega...\n")
 
-productos_bodega = [
-    [102],   # Ropa
-    [78, 56, 91, 34, 72],    # Escolar
-    [55, 88, 39,],   # Tecnologia
-    [99, 44, 32, 6]     # Hogar
-]
+ropa = [random.randint(0, 100) for _ in range(random.randint(1, 10))]
+escolar = [random.randint(0, 100) for _ in range(random.randint(1, 10))]
+tecnologia = [random.randint(0, 100) for _ in range(random.randint(1, 10))]
+hogar = [random.randint(0, 100) for _ in range(random.randint(1, 10))]
 
+print("BODEGA ORIGINAL: ")
+print("Ropa", ropa)
+print("Escolar", escolar)
+print("Tecnología", tecnologia)
+print("Hogar", hogar)
+
+
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        min_index = i
+        for j in range(i + 1, n):
+            if len(arr[j]) < len(arr[min_index]):
+                min_index = j
+        arr[i], arr[min_index] = arr[min_index], arr[i]
+    return arr
 
 
 def insertion_sort(arr):
@@ -21,22 +37,16 @@ def insertion_sort(arr):
         arr[j] = temp
     return arr
 
-def selection_sort(arr):    
-    n = len(arr)
-    for i in range(n):
-        min_index = i
-        for j in range(i + 1, n):
-            if len(arr[j]) < len(arr[min_index]):
-                min_index = j
-        arr[i], arr[min_index] = arr[min_index], arr[i]
-    return arr
-
-productos_bodega_organizados = []
-
-for i in range(len(productos_bodega)):
-    productos_bodega_organizados.append(insertion_sort(productos_bodega[i]))
+productos_bodega = [
+    insertion_sort(ropa), insertion_sort(escolar), insertion_sort(tecnologia), insertion_sort(hogar)
+]
 
 
-print (selection_sort(productos_bodega_organizados))
+#organiza los productos de la bodega por tamaños
+bodega_organizada = selection_sort(productos_bodega)
+
+print ("\nBODEGA ORGANIZADA POR PRECIOS Y TAMAÑOS: ")
+for i in range(len(bodega_organizada)):
+    print(bodega_organizada[i])
 
 
