@@ -1,4 +1,4 @@
-#Método por Selección
+#Método por Selección (O(n^2))
 
 def selection_sort(lista):
     for i in range(len(lista)):
